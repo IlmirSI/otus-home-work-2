@@ -2,7 +2,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: otus-home-work-2-ingress
-  namespace: otus
+  # namespace: otus
   labels:
     name: otus-home-work-2-ingress
   annotations:

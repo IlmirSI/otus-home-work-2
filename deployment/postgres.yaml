@@ -5,7 +5,7 @@ metadata:
   name: postgres
   labels:
     app: postgres
-  namespace: otus
+  # namespace: otus
 spec:
   type: NodePort
   ports:
@@ -18,7 +18,7 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: postgres
-  namespace: otus
+  # namespace: otus
 spec:
   serviceName: "postgres"
   replicas: 1
@@ -29,7 +29,7 @@ spec:
     metadata:
       labels:
         app: postgres
-      namespace: otus
+      # namespace: otus
     spec:
       containers:
       - name: postgres
@@ -40,9 +40,9 @@ spec:
         env:
           - name: POSTGRES_DB
             valueFrom: 
-              secretKeyRef: 
-                key: username
-                name: database-creds
+              configMapKeyRef: 
+                key: POSTGRES_DB
+                name: postgres-config
           - name: POSTGRES_USER
             valueFrom: 
               configMapKeyRef:
@@ -53,16 +53,3 @@ spec:
               secretKeyRef: 
                 key: password
                 name: pg-postgresql
-        volumeMounts:
-        - name: data-pg-postgresql
-          mountPath: /var/lib/postgresql/data
-          subPath: postgres
-  volumeClaimTemplates:
-  - metadata:
-      name: postgredb
-    spec:
-      accessModes: [ "ReadWriteOnce" ]
-      storageClassName: do-block-storage
-      resources:
-        requests:
-          storage: 4Gi

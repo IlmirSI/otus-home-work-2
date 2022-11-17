@@ -2,11 +2,11 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: postgres-config
-  namespace: otus
+  # namespace: otus
   labels:
     app: postgres
 data:
-  POSTGRES_HOST: localhost
+  POSTGRES_HOST: postgres
   POSTGRES_PORT: '5432'
   POSTGRES_DB: otus
   POSTGRES_USER: otus

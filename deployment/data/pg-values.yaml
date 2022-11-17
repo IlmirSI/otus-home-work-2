@@ -28,7 +28,7 @@ global:
       postgresPassword: ""
       username: "otus"
       password: "UWpmZDNTWGVS"
-      database: ""
+      database: "otus"
       existingSecret: ""
       secretKeys:
         adminPasswordKey: ""
