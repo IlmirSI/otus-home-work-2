@@ -1,0 +1,1 @@
+helm install pg -f ./data/pg-values.yaml bitnami/postgresql
