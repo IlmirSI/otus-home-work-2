@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: otus-home-work-2
+  namespace: otus
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: otus-home-work-2-app
+  template:
+    metadata:
+      labels:
+        app: otus-home-work-2-app
+    spec:
+      restartPolicy: Always
+      containers:
+        - name: otus-home-work-2-app
+          image: ilmirsadykov/otus-home-work-2
+          resources:
+            limits:
+              memory: '128Mi'
+              cpu: '500m'
+          ports:
+            - containerPort: 3000
+          env:
+            - name: DATABASE_HOST
+              valueFrom:
+                configMapKeyRef:
+                  key: POSTGRES_HOST
+                  name: postgres-config
+            - name: DATABASE_PORT
+              valueFrom:
+                configMapKeyRef:
+                  key: POSTGRES_PORT
+                  name: postgres-config
+            - name: DATABASE_NAME
+              valueFrom:
+                configMapKeyRef:
+                  key: POSTGRES_DB
+                  name: postgres-config
+            - name: DATABASE_USER
+              valueFrom:
+                configMapKeyRef:
+                  key: POSTGRES_USER
+                  name: postgres-config
+            - name: DATABASE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: password
+                  name: pg-postgresql
+
