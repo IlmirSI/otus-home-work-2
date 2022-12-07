@@ -1,7 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: home-work-3-app
+  name: home-work-3-app-deployment
+  labels:
+    app: home-work-3-app
 spec:
   replicas: 2
   selector:
@@ -18,7 +20,8 @@ spec:
           image: ilmirsadykov/otus-home-work-2:home-work-3
           resources:
           ports:
-            - containerPort: 3000
+            - name: metrics
+              containerPort: 3000
           env:
             - name: DATABASE_HOST
               valueFrom:

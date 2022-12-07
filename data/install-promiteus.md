@@ -25,7 +25,7 @@ helm install pg -f ./deployment/data/pg-values.yaml bitnami/postgresql
 Устанавливаем `prometheus-stack` (прометей + оператор + графана)
 
 ```
-helm install prometheus-stack prometheus-community/kube-prometheus-stack
+helm install prometheus-stack prometheus-community/kube-prometheus-stack -f ./deployment/data/prom-stack-values.yaml
 ```
 
 ## Запуск проекта
