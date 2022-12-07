@@ -1,26 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: otus-home-work-2
-  # namespace: otus
+  name: home-work-3-app
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
-      app: otus-home-work-2-app
+      app: home-work-3-app
   template:
     metadata:
       labels:
-        app: otus-home-work-2-app
+        app: home-work-3-app
     spec:
       restartPolicy: Always
       containers:
-        - name: otus-home-work-2-app
-          image: ilmirsadykov/otus-home-work-2
+        - name: home-work-3-app
+          image: ilmirsadykov/otus-home-work-2:home-work-3
           resources:
-            limits:
-              memory: '128Mi'
-              cpu: '500m'
           ports:
             - containerPort: 3000
           env:
@@ -49,4 +45,3 @@ spec:
                 secretKeyRef:
                   key: password
                   name: pg-postgresql
-

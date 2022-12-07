@@ -1,10 +1,9 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: otus-home-work-2-ingress
-  # namespace: otus
+  name: home-work-3-ingress
   labels:
-    name: otus-home-work-2-ingress
+    name: home-work-3-ingress
   annotations:
     kubernetes.io/ingress.class: nginx
 spec:
@@ -16,6 +15,6 @@ spec:
         path: "/"
         backend:
           service:
-            name: otus-home-work-2-service
+            name: home-work-3-service
             port: 
               number: 3000
